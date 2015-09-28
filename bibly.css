@@ -18,7 +18,7 @@
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 	line-height: 1em;
-	color: #11111;
+	color: #111;
 	
 	/* gradients */
 	background: #fff;
@@ -63,7 +63,7 @@
 	width: 1px;
 	height: 1px;
 	
-	border: solid 30px #ffffff;
+	border: solid 30px #fff;
 	border-width: 10px 15px 0 15px;
 	border-color: #ffffff transparent transparent transparent;
 }
@@ -75,7 +75,7 @@
 	width: 1px;
 	height: 1px;
 	
-	border: solid 30px #000000;
+	border: solid 30px #000;
 	border-width: 10px 15px 0 15px;
 	border-color: #000000 transparent transparent transparent;	
 }
@@ -100,9 +100,9 @@
 	width: 1px;
 	height: 1px;
 	
-	border: solid 30px #000000;
+	border: solid 30px #000;
 	border-width: 0 15px 10px 15px;
-	border-color: transparent transparent #000000 transparent;	
+	border-color: transparent transparent #000 transparent;
 }
 
 
