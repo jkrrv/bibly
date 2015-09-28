@@ -87,11 +87,11 @@ bible.Books = [
 	,verses:[18,25,27,44,27,33,20,29,37,36,21,21,25,29,38,20,41,37,37,21,26,20,37,20,30]
 },
 {
-	names:ordinals(1,'Chronicles Ch Chr')
+	names:ordinals(1,'Chronicles Ch Chr Chron')
 	,verses:[54,55,24,43,26,81,40,40,44,14,47,40,14,17,29,43,27,17,19,8,30,19,32,31,31,32,34,21,30]
 },
 {
-	names:ordinals(2,'Chronicles Ch Chr')
+	names:ordinals(2,'Chronicles Ch Chr Chron')
 	,verses:[17,18,17,22,14,42,22,18,31,19,23,16,22,15,19,14,19,34,11,37,20,12,21,27,28,23,9,27,36,27,21,33,25,33,27,23]
 },
 {
