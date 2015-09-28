@@ -95,7 +95,7 @@ addHeader('bibly.copyright.js', bibly_active_path + biblyjs_min)
 
 addHeader('bibly.copyright.js', bibly_active_path + biblybookmarkletjs_min)
 
-addHeader('bibly.copyright.css', bibly_version_path + biblycss)
-addHeader('bibly.copyright.css', bibly_active_path + biblycss)
-addHeader('bibly.copyright.css', bibly_version_path + biblycss_min)
-addHeader('bibly.copyright.css', bibly_active_path + biblycss_min)
+# addHeader('bibly.copyright.css', bibly_version_path + biblycss)
+# addHeader('bibly.copyright.css', bibly_active_path + biblycss)
+# addHeader('bibly.copyright.css', bibly_version_path + biblycss_min)
+# addHeader('bibly.copyright.css', bibly_active_path + biblycss_min)
