@@ -5,6 +5,8 @@
  *
  * Copyright 2011, John Dyer (http://j.hn/)
  *
+ * Extensively modified by James Kurtz.  (http://kurtz.es)  See logs and diffs at https://github.com/jkrrv/bibly
+ *
  * Scripture quotations marked "ESV" are taken from The Holy Bible, English Standard Version. 
  * Copyright ©2001 by Crossway Bibles, a publishing ministry of Good News Publishers. Used by permission. 
  * All rights reserved. Text provided by the Crossway Bibles Web Service (http://www.gnpcb.org/esv/share/services/).
