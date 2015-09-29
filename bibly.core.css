@@ -1,0 +1,62 @@
+.bibly_reference {
+  text-decoration: none;
+}
+.bibly_popup_outer {
+  /* positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 777777;
+  /* size */
+  width: 270px;
+}
+.bibly_popup_header {
+  padding: 4px 10px;
+}
+.bibly_popup_footer {
+  padding: 5px 10px;
+}
+.bibly_popup_arrowbot {
+  position: absolute;
+  bottom: -9px;
+  left: 120px;
+  width: 1px;
+  height: 1px;
+}
+.bibly_popup_arrowbot_border {
+  position: absolute;
+  bottom: -10px;
+  left: 120px;
+  width: 1px;
+  height: 1px;
+}
+.bibly_popup_arrowtop {
+  position: absolute;
+  top: -9px;
+  left: 120px;
+  width: 1px;
+  height: 1px;
+}
+.bibly_popup_arrowtop_border {
+  position: absolute;
+  top: -10px;
+  left: 120px;
+  width: 1px;
+  height: 1px;
+}
+.bibly_popup_content p {
+  display: inline;
+}
+.bibly_popup_content .NET-version p:first-child {
+  display: none;
+}
+.bibly_popup_content .NET-version a {
+  display: none;
+}
+.bibly_popup_content .ESV-version h2 {
+  display: none;
+}
+.bibly_popup_content .biblia p:first-child {
+  display: none;
+}
