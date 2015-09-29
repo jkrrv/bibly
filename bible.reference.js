@@ -6,7 +6,7 @@
 		verse1 = -1,
 		chapter2 = -1,
 		verse2 = -1,
-		input = new String(textReference).replace('&ndash;','-').replace('–','-').replace(/(\d+[\.:])\s+(\d+)/gi, '$1$2'),
+		input = String(textReference).replace('&ndash;','-').replace('–','-').replace(/(\d+[\.:])\s+(\d+)/gi, '$1$2'),
 		i, j, il, jl,
 		afterRange = false,
 		afterSeparator = false,
@@ -38,7 +38,7 @@
 		for (i = 0, il = bible.Books.length ; i < il && bookIndex == -1; i++) {
 			// test each name starting with the full name, then short code, then abbreviation, then alternates
 			for (j = 0, jl = bible.Books[i].names.length; j<jl; j++) {
-				name = new String(bible.Books[i].names[j]).toLowerCase();
+				name = String(bible.Books[i].names[j]).toLowerCase();
 
 				if (possibleMatch == name) {
 					bookIndex = i;
@@ -143,7 +143,7 @@
 	// finalize
 	return bible.Reference(bookIndex, chapter1, verse1, chapter2, verse2);
 
-}
+};
 
 bible.Reference = function () {
 
