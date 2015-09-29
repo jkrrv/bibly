@@ -19,31 +19,47 @@
 }
 .bibly_popup_arrowbot {
   position: absolute;
-  bottom: -9px;
+  bottom: -10px;
   left: 120px;
   width: 1px;
   height: 1px;
 }
 .bibly_popup_arrowbot_border {
   position: absolute;
-  bottom: -10px;
+  bottom: -11px;
   left: 120px;
   width: 1px;
   height: 1px;
 }
 .bibly_popup_arrowtop {
   position: absolute;
-  top: -9px;
+  top: -10px;
   left: 120px;
   width: 1px;
   height: 1px;
 }
 .bibly_popup_arrowtop_border {
   position: absolute;
-  top: -10px;
+  top: -11px;
   left: 120px;
   width: 1px;
   height: 1px;
+}
+.bibly_popup_content {
+  padding: 10px 10px 0;
+  min-height: 40px;
+  overflow-y: hidden;
+  max-height: 180px;
+  position: relative;
+}
+.bibly_popup_content .bibly_readMore {
+  position: absolute;
+  text-align: center;
+  padding: 20px 10px 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
 }
 .bibly_popup_content p {
   display: inline;

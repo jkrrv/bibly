@@ -13,7 +13,7 @@
 			bibliaApiKey: '436e02d01081d28a78a45d65f66f4416',
 			autoStart: true,
 			startNodeId: '',
-			maxVerses: 4,
+			maxVerses: 6,
 			ignoreClassName: 'bibly_ignore',
 			ignoreTags: ['h1','h2','h3','h4']
 		},
@@ -87,7 +87,7 @@
 			if (typeof reference != 'undefined' && reference.isValid()) {
 
 				// replace the referenceNode TEXT with an anchor node to bib.ly
-				newLink = node.ownerDocument.createElement('A');
+				newLink = node.ownerDocument.createElement('a');
 				node.parentNode.replaceChild(newLink, referenceNode);
 				newLink.setAttribute('href', reference.toShortUrl() + (bibly.linkVersion !== '' ? '.' + bibly.linkVersion : ''));
 				newLink.setAttribute('title', 'Read ' + reference.toString());
@@ -239,7 +239,7 @@
 				max = bibly.maxVerses,
 				reference = new bible.Reference(refString);
 
-			// check that it's only 4 verses
+			// check that it's only maxVerses verses
 			if (reference.verse1 > 0 && reference.verse2 > 0 && reference.verse2 - reference.verse1 > (max-1)) {
 				reference.verse2 = reference.verse1 + (max-1);
 			} else if (reference.verse1 <= 0 && reference.verse2 <= 0) {
@@ -283,11 +283,13 @@
 					text = d.text;
 					break;
 				case 'ESV':
+					window.console.log(d);
 					text = d.content;
 					break;
 			}
 
-			p.content.innerHTML = '<div class="' + className + '">' + text + '</div>';
+			p.content.innerHTML = "<div class=\"" + className + "\">" + text + "</div>";
+			p.content.innerHTML += "<a class=\"bibly_readMore\" href=\"\">Read More...</div>";
 		},
 		checkPosTimeout,
 		handleLinkMouseOver = function(e) {

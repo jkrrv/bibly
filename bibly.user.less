@@ -1,92 +1,101 @@
-
 @backgroundColor: #fff;
 @textColor: #111;
 @accentColor: #900;
 
-
 .bibly_reference {
-	text-decoration: none;
+  text-decoration: none;
 }
 
-.bibly_popup_outer  {
+.bibly_popup_outer {
 
-	/* style */
-	text-align:left;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	line-height: 1em;
-	color: @textColor;
-	
-	/* gradients */
-	background: @backgroundColor;
+  /* style */
+  text-align: left;
+  //font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1em;
+  color: @textColor;
 
-	/* border radius */
-	border: solid 1px @textColor;
-	/*-webkit-border-radius: 2px;*/
-	   /*-moz-border-radius: 2px;*/
-	        /*border-radius: 2px;*/
-	
-	/* shadow */
-	/*-webkit-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-	   /*-moz-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-	        /*box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
+  /* gradients */
+  background: @backgroundColor;
+
+  /* border radius */
+  border: solid 1px @textColor;
+  /*-webkit-border-radius: 2px;*/
+  /*-moz-border-radius: 2px;*/
+  /*border-radius: 2px;*/
+
+  /* shadow */
+  /*-webkit-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
+  /*-moz-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
+  /*box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
 }
+
 .bibly_popup_header {
-	background: @accentColor;
-	font-weight: bold;
-	line-height: 1.2em;
-	color: @backgroundColor;
-	
-	/*-webkit-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-	   /*-moz-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-	        /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);	*/
+  background: @accentColor;
+  font-weight: bold;
+  line-height: 1.2em;
+  color: @backgroundColor;
+
+  /*-webkit-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
+  /*-moz-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
+  /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);	*/
 }
 
 .bibly_popup_footer {
-	font-size: 8px;
-	color: average(@backgroundColor, @textColor);
-}
-.bibly_popup_footer a {
-	color: average(@backgroundColor, @textColor);
-	text-decoration: underline;
-}
-.bibly_popup_arrowbot {	
-	border-style: solid;
-	border-width: 10px 15px 0 15px;
-	border-color: @backgroundColor transparent transparent transparent;
-}
-.bibly_popup_arrowbot_border{	
-	border-style: solid;
-	border-width: 10px 15px 0 15px;
-	border-color: @textColor transparent transparent transparent;
-}
-.bibly_popup_arrowtop {	
-	border-style: solid;
-	border-width: 0 15px 10px 15px;
-	border-color: transparent transparent @accentColor transparent;
-}
-.bibly_popup_arrowtop_border{	
-	border-style: solid;
-	border-width: 0 15px 10px 15px;
-	border-color: transparent transparent @textColor transparent;
+  font-size: 8px;
+  color: average(@backgroundColor, @textColor);
 }
 
+.bibly_popup_footer a {
+  color: average(@backgroundColor, @textColor);
+  text-decoration: underline;
+}
+
+.bibly_popup_arrowbot {
+  border-style: solid;
+  border-width: 10px 15px 0 15px;
+  border-color: @backgroundColor transparent transparent transparent;
+}
+
+.bibly_popup_arrowbot_border {
+  border-style: solid;
+  border-width: 10px 15px 0 15px;
+  border-color: @textColor transparent transparent transparent;
+}
+
+.bibly_popup_arrowtop {
+  border-style: solid;
+  border-width: 0 15px 10px 15px;
+  border-color: transparent transparent @accentColor transparent;
+}
+
+.bibly_popup_arrowtop_border {
+  border-style: solid;
+  border-width: 0 15px 10px 15px;
+  border-color: transparent transparent @textColor transparent;
+}
 
 .bibly_popup_content {
-	padding: 10px;
-	min-height: 40px;
-	color: @textColor;
-	line-height: 1.4em;
+  color: @textColor;
+  line-height: 1.4em;
+
+  .bibly_readMore {
+    background: linear-gradient(fade(@backgroundColor, 0), fade(@backgroundColor, 100));
+    color: @accentColor;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
+
 .bibly_popup_content p {
-	color: @textColor;
+  color: @textColor;
 }
 
 .bibly_verse_number, .bibly_popup_content sup, .bibly_popup_content .ESV-version .verse-num {
-	font-size: 9px;
-	color: average(@backgroundColor, @textColor);
-	top: -3px;
-	vertical-align: baseline;
-	position: relative;
-	margin-right: 2px;
+  font-size: 9px;
+  color: average(@backgroundColor, @textColor);
+  top: -3px;
+  vertical-align: baseline;
+  position: relative;
+  margin-right: 2px;
 }

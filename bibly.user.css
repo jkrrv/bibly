@@ -4,7 +4,6 @@
 .bibly_popup_outer {
   /* style */
   text-align: left;
-  font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1em;
   color: #111111;
@@ -58,10 +57,14 @@
   border-color: transparent transparent #111111 transparent;
 }
 .bibly_popup_content {
-  padding: 10px;
-  min-height: 40px;
   color: #111111;
   line-height: 1.4em;
+}
+.bibly_popup_content .bibly_readMore {
+  background: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
+  color: #990000;
+  text-decoration: none;
+  font-weight: bold;
 }
 .bibly_popup_content p {
   color: #111111;
