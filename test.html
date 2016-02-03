@@ -8,6 +8,20 @@
 	<script src="bibly.js"></script>
 	<link href="bibly.user.css" rel="stylesheet" />
 	<link href="bibly.core.css" rel="stylesheet" />
+
+	<style type="text/css">
+		body {
+			font-family: Cabin, sans-serif;
+		}
+	</style>
+
+	<script>
+		bibly.toShortUrl = function (reference) {
+			if (reference.bookIndex < 0 || reference.bookIndex >= bible.Books.length) return "invalid";
+			return '/_bible/' + bible.Books[reference.bookIndex].names[1] + reference.chapterAndVerse('.','-','-') + (bibly.linkVersion !== '' ? '.' + bibly.linkVersion : '');
+		};
+	</script>
+
 </head>
 <body>
 

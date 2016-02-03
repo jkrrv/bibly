@@ -9,7 +9,7 @@
 			className: 'bibly_reference',
 			enablePopups: true,
 			popupVersion: 'ESV',
-			linkVersion: '',
+			linkVersion: 'ESV',
 			bibliaApiKey: '436e02d01081d28a78a45d65f66f4416',
 			autoStart: true,
 			startNodeId: '',
@@ -34,7 +34,6 @@
 			var match = referenceRegex.exec(node.data),
 				val,
 				referenceNode,
-				afterReferenceNode,
 				newLink;
 
 			// reset this
@@ -45,7 +44,7 @@
 				// see https://developer.mozilla.org/en/DOM/text.splitText
 				// split into three parts [node=before][referenceNode][afterReferenceNode]
 				referenceNode = node.splitText(match.index);
-				afterReferenceNode = referenceNode.splitText(val.length);
+				referenceNode.splitText(val.length);
 
 				// send the matched text down the
 				newLink = createLinksFromNode(node, referenceNode);
@@ -89,9 +88,9 @@
 				// replace the referenceNode TEXT with an anchor node to bib.ly
 				newLink = node.ownerDocument.createElement('a');
 				node.parentNode.replaceChild(newLink, referenceNode);
-				newLink.setAttribute('href', reference.toShortUrl() + (bibly.linkVersion !== '' ? '.' + bibly.linkVersion : ''));
-				newLink.setAttribute('title', 'Read ' + reference.toString());
-				newLink.setAttribute('rel', reference.toString());
+				newLink.setAttribute('href', reference.toShortUrl());
+				//newLink.setAttribute('title', 'Read ' + reference.toString()); // the title jawn is really just annoying.
+				newLink.setAttribute('data-bibly-refstr', reference.toString());
 				newLink.setAttribute('class', bibly.className);
 				newLink.appendChild(referenceNode);
 
@@ -117,7 +116,7 @@
 				text = refText,
 				reference = new bible.Reference(text),
 				match = null,
-				p1, p3, p5;
+				p3, p5;
 
 			if (reference != null && typeof reference.isValid !== 'undefined' && reference.isValid()) {
 
@@ -130,7 +129,7 @@
 				match = verseRegex.exec(refText);
 				if (match) {
 
-					p1 = parseInt(match[1],10);
+					//p1 = parseInt(match[1],10);
 					p3 = parseInt(match[3],10);
 					p5 = parseInt(match[5],10);
 
@@ -176,15 +175,8 @@
 				}
 
 				// failure
-				return {
-					refText: refText,
-					toShortUrl: function() {
-						return 'http://bib.ly/' + refText.replace(/\s/ig,'').replace(/:/ig,'.').replace(/–/ig,'-');
-					},
-					toString: function() {
-						return refText  + " = Can't parse it";
-					}
-				};
+				window.console.error("Reference parse failed.");
+				return null
 			}
 		},
 		callbackIndex=100000,
@@ -226,10 +218,10 @@
 
 			// old IEs don't have Array.indexOf
 			for (; i < il; i++) {
-			  if (allowedPopupVersions[i].toUpperCase() === v) {
-				indexOf = i;
-				break;
-			  }
+				if (allowedPopupVersions[i].toUpperCase() === v) {
+					indexOf = i;
+					break;
+				}
 			}
 
 			return (indexOf > -1) ? v : defaultPopupVersion;
@@ -254,14 +246,15 @@
 					break;
 				case 'KJV':
 				case 'LEB':
-					jsonp('http://api.biblia.com/v1/bible/content/' + v + '.html.json?style=oneVersePerLine&key=' + bibly.bibliaApiKey + '&passage=' + encodeURIComponent(reference.toString()), callback);
+					jsonp('http://api.biblia.com/v1/bible/content/' + v + '.html.json?style=oneVersePerLine&key=' + bibly.bibliaApiKey + '&passage=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
 					break;
 				case 'ESV':
-					jsonp('http://www.esvapi.org/crossref/ref.php?reference=' + encodeURIComponent(reference.toString()), callback);
+					jsonp('http://www.esvapi.org/crossref/ref.php?reference=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
 					break;
 			}
 		},
 		handleBibleText = function(d) {
+			//console.log(d);
 			var
 				v = getPopupVersion(),
 				p = bibly.popup,
@@ -269,6 +262,8 @@
 				text = '',
 				className = v + '-version',
 				i,il;
+
+			//window.console.log("bibly", bibly);
 
 			switch (v) {
 				default:
@@ -279,17 +274,33 @@
 					break;
 				case 'KJV':
 				case 'LEB':
+					//window.console.log(d);
 					className += ' biblia';
 					text = d.text;
 					break;
 				case 'ESV':
-					window.console.log(d);
+					//window.console.log(d);
 					text = d.content;
 					break;
 			}
 
-			p.content.innerHTML = "<div class=\"" + className + "\">" + text + "</div>";
-			p.content.innerHTML += "<a class=\"bibly_readMore\" href=\"\">Read More...</div>";
+			while (p.content.firstChild) { // remove the "loading" placeholder, and anything else that's stuck around
+				p.content.removeChild(p.content.firstChild);
+			}
+
+			var textNode = document.createElement('div');
+			textNode.className = className;
+			textNode.innerHTML = text;
+			p.content.appendChild(textNode);
+
+			if (p.content.scrollHeight > p.content.clientHeight) {
+				var readMoreLink = document.createElement('a');
+				readMoreLink.setAttribute('href', p.ref.toShortUrl());
+				readMoreLink.className = "bibly_readMore";
+				readMoreLink.appendChild(document.createTextNode("Read More..."));
+				p.content.appendChild(readMoreLink);
+			}
+
 		},
 		checkPosTimeout,
 		handleLinkMouseOver = function(e) {
@@ -303,13 +314,15 @@
 				x = 0,
 				y = 0,
 				v = getPopupVersion(),
-				referenceText = target.getAttribute('rel'),
+				reference = new bible.Reference(target.getAttribute('data-bibly-refstr')),
 				viewport = getWindowSize(),
 				scrollPos = getScroll();
 
+
 			p.outer.style.display = 'block';
-			p.header.innerHTML = referenceText + ' (' + v + ')';
-			p.content.innerHTML = 'Loading...<br/><br/><br/>';
+			p.ref = reference;
+			p.header.innerHTML = p.ref.toString() + ' (' + v + ')';
+			p.content.innerHTML = '<span class="bibly_loading">Loading...</span>';
 			p.footer.innerHTML = getFooter(v);
 
 
@@ -344,7 +357,7 @@
 			positionPopup();
 
 
-			getBibleText(referenceText, function(d) {
+			getBibleText(reference.toString(), function(d) {
 				// handle the various JSON outputs
 				handleBibleText(d);
 
@@ -540,7 +553,14 @@
 
 			// create popup
 			var p = bibly.popup = {
-					outer: doc.createElement('div')
+					outer: doc.createElement('div'),
+					arrowbot: null,
+					arrowbot_border: null,
+					arrowtop: null,
+					arrowtop_border: null,
+					header: null,
+					content: null,
+					footer: null
 				},
 				parts = ['header','content','footer','arrowtop_border','arrowtop','arrowbot_border','arrowbot'],
 				i,

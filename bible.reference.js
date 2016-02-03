@@ -145,11 +145,6 @@
 
 };
 
-bible.toShortUrl = function (reference) {
-	if (reference.bookIndex < 0 || reference.bookIndex >= bible.Books.length) return "invalid";
-	return 'http://bib.ly/' + bible.Books[reference.bookIndex].names[1] + reference.chapterAndVerse('.','-','-');
-};
-
 bible.Reference = function () {
 
 	var 
@@ -218,7 +213,14 @@ bible.Reference = function () {
 		},
 
 		toShortUrl: function() {
-			return bible.toShortUrl(this);
+			if (!!bibly && typeof bibly.toShortUrl === "function") {
+				return bibly.toShortUrl(this);
+			}
+
+			if (this.bookIndex < 0 || this.bookIndex >= bible.Books.length) return "invalid";
+				return 'http://bib.ly/' + bible.Books[this.bookIndex].names[1] + this.chapterAndVerse('.','-','-') + (!!this.linkVersion ? '.' + this.linkVersion : '');
+
+
 		}
 	}
 };
