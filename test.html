@@ -18,7 +18,7 @@
 	<script>
 		bibly.toShortUrl = function (reference) {
 			if (reference.bookIndex < 0 || reference.bookIndex >= bible.Books.length) return "invalid";
-			return '/_bible/' + bible.Books[reference.bookIndex].names[1] + reference.chapterAndVerse('.','-','-') + (bibly.linkVersion !== '' ? '.' + bibly.linkVersion : '');
+			return '/_bible/' + bible.Books[reference.bookIndex].names[1] + reference.chapterAndVerse('_','-','-');
 		};
 	</script>
 
