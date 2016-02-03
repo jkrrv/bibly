@@ -1,6 +1,6 @@
 @backgroundColor: #fff;
 @textColor: #111;
-@accentColor: #900;
+@accentColor: rgb(44,130,197);
 
 .bibly_reference {
   text-decoration: none;
@@ -10,8 +10,7 @@
 
   /* style */
   text-align: left;
-  //font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: .75em;
   line-height: 1em;
   color: @textColor;
 
@@ -42,7 +41,7 @@
 }
 
 .bibly_popup_footer {
-  font-size: 8px;
+  font-size: .6em;
   color: average(@backgroundColor, @textColor);
 }
 
@@ -84,6 +83,11 @@
     color: @accentColor;
     text-decoration: none;
     font-weight: bold;
+    text-shadow:
+      -1px -1px 0 @backgroundColor,
+      1px -1px 0 @backgroundColor,
+      -1px 1px 0 @backgroundColor,
+      1px 1px 0 @backgroundColor;
   }
 }
 
@@ -92,7 +96,7 @@
 }
 
 .bibly_verse_number, .bibly_popup_content sup, .bibly_popup_content .ESV-version .verse-num {
-  font-size: 9px;
+  font-size: .6em;
   color: average(@backgroundColor, @textColor);
   top: -3px;
   vertical-align: baseline;
