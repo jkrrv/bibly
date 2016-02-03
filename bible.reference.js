@@ -145,6 +145,11 @@
 
 };
 
+bible.toShortUrl = function (reference) {
+	if (reference.bookIndex < 0 || reference.bookIndex >= bible.Books.length) return "invalid";
+	return 'http://bib.ly/' + bible.Books[reference.bookIndex].names[1] + reference.chapterAndVerse('.','-','-');
+};
+
 bible.Reference = function () {
 
 	var 
@@ -160,7 +165,7 @@ bible.Reference = function () {
 	} else if (args.length == 1 && typeof args[0] == 'string') { // a string that needs to be parsed
 		return bible.parseReference(args[0]);
 	} else if (args.length == 1) { // unknown
-		return null;
+		throw new Error("Unknown reference");
 	} else {
 		_bookIndex = args[0];
 		_chapter1 = args[1];
@@ -212,9 +217,8 @@ bible.Reference = function () {
 			return bible.Books[this.bookIndex].names[0] + ' ' + this.chapterAndVerse();
 		},
 
-		toShortUrl: function () {
-			if (this.bookIndex < 0 || this.bookIndex >= bible.Books.length) return "invalid";
-			return 'http://bib.ly/' + bible.Books[this.bookIndex].names[1] + this.chapterAndVerse('.','-','-');
+		toShortUrl: function() {
+			return bible.toShortUrl(this);
 		}
 	}
 };
