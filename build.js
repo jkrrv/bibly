@@ -47,14 +47,18 @@ _fs.writeFileSync(bibly_active_path  + biblyjs_min, _fs.readFileSync(bibly_versi
 
 // CSS
 {
-    var biblycss = bibly_filename + '.css';
-    var biblycss_min = bibly_filename + '.min.css';
+    var biblycss_u = bibly_filename + '.userdefault.css';
+    var biblycss_c = bibly_filename + '.core.css';
+    var biblycss_u_min = bibly_filename + '.userdefault.min.css';
+    var biblycss_c_min = bibly_filename + '.core.min.css';
 
-    _fs.writeFileSync(bibly_version_path + biblycss, _fs.readFileSync(biblycss)); // should have some error handling.
-    _fs.writeFileSync(bibly_active_path + biblycss, _fs.readFileSync(bibly_version_path + biblycss)); // should have some error handling.
+    _fs.writeFileSync(bibly_version_path + biblycss_u, _fs.readFileSync(biblycss_u)); // should have some error handling.
+    _fs.writeFileSync(bibly_version_path + biblycss_c, _fs.readFileSync(biblycss_c)); // should have some error handling.
+    _fs.writeFileSync(bibly_active_path + biblycss_u, _fs.readFileSync(bibly_version_path + biblycss_u)); // should have some error handling.
+    _fs.writeFileSync(bibly_active_path + biblycss_c, _fs.readFileSync(bibly_version_path + biblycss_c)); // should have some error handling.
 
     var _recess = require('recess');
-    _recess(biblycss, {
+    _recess([biblycss_c, biblycss_u], {
         compile: true,
         compress: true,
         noIDs: false,
@@ -68,9 +72,13 @@ _fs.writeFileSync(bibly_active_path  + biblyjs_min, _fs.readFileSync(bibly_versi
         //    obj.errors // array of failed lint rules
         //);
 
-        _fs.writeFileSync(bibly_version_path + biblycss_min, obj[0].output[0]);
-        console.log(' '+ bibly_version_path + biblycss_min +' built.');
-        _fs.writeFileSync(bibly_active_path + biblycss_min, _fs.readFileSync(bibly_version_path + biblycss_min));
+        _fs.writeFileSync(bibly_version_path + biblycss_c_min, obj[0].output[0]);
+        console.log(' '+ bibly_version_path + biblycss_c_min +' built.');
+        _fs.writeFileSync(bibly_active_path + biblycss_c_min, _fs.readFileSync(bibly_version_path + biblycss_c_min));
+
+        _fs.writeFileSync(bibly_version_path + biblycss_u_min, obj[1].output[0]);
+        console.log(' '+ bibly_version_path + biblycss_u_min +' built.');
+        _fs.writeFileSync(bibly_active_path + biblycss_u_min, _fs.readFileSync(bibly_version_path + biblycss_u_min));
     });
 }
 

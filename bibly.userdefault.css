@@ -7,26 +7,14 @@
   font-size: .75em;
   line-height: 1em;
   color: #111111;
-  /* gradients */
   background: #ffffff;
-  /* border radius */
   border: solid 1px #111111;
-  /*-webkit-border-radius: 2px;*/
-  /*-moz-border-radius: 2px;*/
-  /*border-radius: 2px;*/
-  /* shadow */
-  /*-webkit-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-  /*-moz-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-  /*box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
 }
 .bibly_popup_header {
-  background: #2c82c5;
+  background: #990000;
   font-weight: bold;
   line-height: 1.2em;
   color: #ffffff;
-  /*-webkit-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-  /*-moz-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-  /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);	*/
 }
 .bibly_popup_footer {
   font-size: .6em;
@@ -49,7 +37,7 @@
 .bibly_popup_arrowtop {
   border-style: solid;
   border-width: 0 15px 10px 15px;
-  border-color: transparent transparent #2c82c5 transparent;
+  border-color: transparent transparent #990000 transparent;
 }
 .bibly_popup_arrowtop_border {
   border-style: solid;
@@ -62,7 +50,7 @@
 }
 .bibly_popup_content .bibly_readMore {
   background: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
-  color: #2c82c5;
+  color: #990000;
   text-decoration: none;
   font-weight: bold;
   text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;

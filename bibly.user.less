@@ -1,105 +1,89 @@
-@backgroundColor: #fff;
-@textColor: #111;
-@accentColor: rgb(44,130,197);
+.biblyUser(@backgroundColor: #fff, @textColor: #111, @accentColor: #900) {
 
-.bibly_reference {
-  text-decoration: none;
-}
-
-.bibly_popup_outer {
-
-  /* style */
-  text-align: left;
-  font-size: .75em;
-  line-height: 1em;
-  color: @textColor;
-
-  /* gradients */
-  background: @backgroundColor;
-
-  /* border radius */
-  border: solid 1px @textColor;
-  /*-webkit-border-radius: 2px;*/
-  /*-moz-border-radius: 2px;*/
-  /*border-radius: 2px;*/
-
-  /* shadow */
-  /*-webkit-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-  /*-moz-box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-  /*box-shadow: 0 1px 5px rgba(50,50,50,0.5);*/
-}
-
-.bibly_popup_header {
-  background: @accentColor;
-  font-weight: bold;
-  line-height: 1.2em;
-  color: @backgroundColor;
-
-  /*-webkit-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-  /*-moz-text-shadow: 1px 1px 1px rgba(50,50,50,0.5);*/
-  /*text-shadow: 1px 1px 1px rgba(50,50,50,0.5);	*/
-}
-
-.bibly_popup_footer {
-  font-size: .6em;
-  color: average(@backgroundColor, @textColor);
-}
-
-.bibly_popup_footer a {
-  color: average(@backgroundColor, @textColor);
-  text-decoration: underline;
-}
-
-.bibly_popup_arrowbot {
-  border-style: solid;
-  border-width: 10px 15px 0 15px;
-  border-color: @backgroundColor transparent transparent transparent;
-}
-
-.bibly_popup_arrowbot_border {
-  border-style: solid;
-  border-width: 10px 15px 0 15px;
-  border-color: @textColor transparent transparent transparent;
-}
-
-.bibly_popup_arrowtop {
-  border-style: solid;
-  border-width: 0 15px 10px 15px;
-  border-color: transparent transparent @accentColor transparent;
-}
-
-.bibly_popup_arrowtop_border {
-  border-style: solid;
-  border-width: 0 15px 10px 15px;
-  border-color: transparent transparent @textColor transparent;
-}
-
-.bibly_popup_content {
-  color: @textColor;
-  line-height: 1.4em;
-
-  .bibly_readMore {
-    background: linear-gradient(fade(@backgroundColor, 0), fade(@backgroundColor, 100));
-    color: @accentColor;
+  .bibly_reference {
     text-decoration: none;
-    font-weight: bold;
-    text-shadow:
-      -1px -1px 0 @backgroundColor,
-      1px -1px 0 @backgroundColor,
-      -1px 1px 0 @backgroundColor,
-      1px 1px 0 @backgroundColor;
   }
-}
 
-.bibly_popup_content p {
-  color: @textColor;
-}
+  .bibly_popup_outer {
 
-.bibly_verse_number, .bibly_popup_content sup, .bibly_popup_content .ESV-version .verse-num {
-  font-size: .6em;
-  color: average(@backgroundColor, @textColor);
-  top: -3px;
-  vertical-align: baseline;
-  position: relative;
-  margin-right: 2px;
+    /* style */
+    text-align: left;
+    font-size: .75em;
+    line-height: 1em;
+    color: @textColor;
+    background: @backgroundColor;
+    border: solid 1px @textColor;
+  }
+
+  .bibly_popup_header {
+    background: @accentColor;
+    font-weight: bold;
+    line-height: 1.2em;
+    color: @backgroundColor;
+  }
+
+  .bibly_popup_footer {
+    font-size: .6em;
+    color: average(@backgroundColor, @textColor);
+  }
+
+  .bibly_popup_footer a {
+    color: average(@backgroundColor, @textColor);
+    text-decoration: underline;
+  }
+
+  .bibly_popup_arrowbot {
+    border-style: solid;
+    border-width: 10px 15px 0 15px;
+    border-color: @backgroundColor transparent transparent transparent;
+  }
+
+  .bibly_popup_arrowbot_border {
+    border-style: solid;
+    border-width: 10px 15px 0 15px;
+    border-color: @textColor transparent transparent transparent;
+  }
+
+  .bibly_popup_arrowtop {
+    border-style: solid;
+    border-width: 0 15px 10px 15px;
+    border-color: transparent transparent @accentColor transparent;
+  }
+
+  .bibly_popup_arrowtop_border {
+    border-style: solid;
+    border-width: 0 15px 10px 15px;
+    border-color: transparent transparent @textColor transparent;
+  }
+
+  .bibly_popup_content {
+    color: @textColor;
+    line-height: 1.4em;
+
+    .bibly_readMore {
+      background: linear-gradient(fade(@backgroundColor, 0), fade(@backgroundColor, 100));
+      color: @accentColor;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow:
+        -1px -1px 0 @backgroundColor,
+        1px -1px 0 @backgroundColor,
+        -1px 1px 0 @backgroundColor,
+        1px 1px 0 @backgroundColor;
+    }
+  }
+
+  .bibly_popup_content p {
+    color: @textColor;
+  }
+
+  .bibly_verse_number, .bibly_popup_content sup, .bibly_popup_content .ESV-version .verse-num {
+    font-size: .6em;
+    color: average(@backgroundColor, @textColor);
+    top: -3px;
+    vertical-align: baseline;
+    position: relative;
+    margin-right: 2px;
+  }
+
 }
