@@ -202,12 +202,12 @@
 		getFooter= function(version) {
 			switch (version) {
 				case 'NET':
-					return '<a href="http://bible.org/">NET Bible® copyright ©1996-2006 by Biblical Studies Press, LLC</a>';
+					return '<a href="//bible.org/">NET Bible® copyright ©1996-2006 by Biblical Studies Press, LLC</a>';
 				case 'ESV':
-					return 'English Standard Version. Copyright &copy;2001 by <a href="http://www.crosswaybibles.org">Crossway Bibles</a>';
+					return 'English Standard Version. Copyright &copy;2001 by <a href="//www.crossway.org/">Crossway</a>';
 				case 'LEB':
 				case 'KJV':
-					return version + ' powered by <a href="http://biblia.com/">Biblia</a> web services from <a href="http://www.logos.com/">Logos Bible Software</a>';
+					return version + ' powered by <a href="//biblia.com/">Biblia</a> web services from <a href="//www.logos.com/">Logos Bible Software</a>';
 			}
 		},
 		getPopupVersion = function() {
@@ -242,14 +242,14 @@
 			switch (v) {
 				default:
 				case 'NET':
-					jsonp('http://labs.bible.org/api/?passage=' + encodeURIComponent(reference.toString()) + '&type=json', callback);
+					jsonp('//labs.bible.org/api/?passage=' + encodeURIComponent(reference.toString()) + '&type=json', callback);
 					break;
 				case 'KJV':
 				case 'LEB':
-					jsonp('http://api.biblia.com/v1/bible/content/' + v + '.html.json?style=oneVersePerLine&key=' + bibly.bibliaApiKey + '&passage=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
+					jsonp('//api.biblia.com/v1/bible/content/' + v + '.html.json?style=oneVersePerLine&key=' + bibly.bibliaApiKey + '&passage=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
 					break;
 				case 'ESV':
-					jsonp('http://www.esvapi.org/crossref/ref.php?reference=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
+					jsonp('//www.esvapi.org/crossref/ref.php?reference=' + encodeURIComponent(reference.toString()), callback, reference.toShortUrl());
 					break;
 			}
 		},
